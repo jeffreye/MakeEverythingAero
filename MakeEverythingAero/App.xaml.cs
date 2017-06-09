@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Diagnostics;
-using System.Threading;
-using static MakeEverythingAero.WindowsAPI;
-using System.IO;
 
 namespace MakeEverythingAero
 {
@@ -17,13 +10,14 @@ namespace MakeEverythingAero
     public partial class App : Application
     {
         System.Windows.Forms.NotifyIcon notifyIcon = new System.Windows.Forms.NotifyIcon();
-        
+
         private void CreateTray()
         {
             notifyIcon.Icon = MakeEverythingAero.Properties.Resources.Icon;
-            notifyIcon.Text = "Aero";
+            notifyIcon.Text = "Make Everything Aero";
             notifyIcon.ContextMenu = new System.Windows.Forms.ContextMenu(
                 new[]{
+                    new System.Windows.Forms.MenuItem("Start On Boot", AutoStartupItem_Click){ Checked = AutoStartup.Check()},
                     new System.Windows.Forms.MenuItem("Disabled", (s, e) => AeroFXs.Current = AeroFXs.Disabled),
                     new System.Windows.Forms.MenuItem("Blur", (s, e) => AeroFXs.Current = AeroFXs.Blur),
                     new System.Windows.Forms.MenuItem("Transparent", (s, e) => AeroFXs.Current = AeroFXs.Transparent),
@@ -31,6 +25,17 @@ namespace MakeEverythingAero
                 }
                 );
             notifyIcon.Visible = true;
+        }
+
+        private void AutoStartupItem_Click(object sender, EventArgs args)
+        {
+            var menu = sender as System.Windows.Forms.MenuItem;
+            menu.Checked = !menu.Checked;
+
+            if (!AutoStartup.Set(menu.Checked))
+            {
+                System.Windows.Forms.MessageBox.Show("Failed to update registry");
+            }
         }
 
         private void Application_Startup(object sender, StartupEventArgs args)

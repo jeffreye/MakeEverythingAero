@@ -72,6 +72,7 @@
     </ApplicationDefinition>
     <Compile Include="AccentPolicy.cs" />
     <Compile Include="AeroFXs.cs" />
+    <Compile Include="AutoStartup.cs" />
     <Compile Include="WindowCompositonAttributeData.cs" />
     <Compile Include="WindowsAPI.cs" />
     <Page Include="MainWindow.xaml">

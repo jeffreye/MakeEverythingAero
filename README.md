@@ -5,6 +5,7 @@
 
 This utility give your a glass effect into your Taskbar, Action center and more.
 
+![Aero Effect](https://github.com/jeffreye/MakeEverythingAero/raw/master/images/screenshot4.png "Aero")
 ![Blur Effect](https://github.com/jeffreye/MakeEverythingAero/raw/master/images/screenshot1.png "Blur")
 ![Transparent Effect](https://github.com/jeffreye/MakeEverythingAero/raw/master/images/screenshot2.png "Transparent")
 
